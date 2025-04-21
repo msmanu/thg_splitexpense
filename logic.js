@@ -20,9 +20,10 @@ const db = getFirestore(app);
 
 const people = ["Pineapple", "Akele", "Nimaanga", "Zillet", "Shineeee", "Madhurameyy"];
 
-// Make globally accessible
 window.addExpense = async function () {
   const splitTitle = localStorage.getItem('currentSplit');
+  if (!splitTitle) return alert("Split not selected. Go back and choose or create one.");
+
   const payer = document.getElementById('payer').value;
   const type = document.getElementById('splitType').value;
   const amount = parseFloat(document.getElementById('amount').value);
@@ -86,17 +87,23 @@ function renderSummary(data) {
   document.getElementById('summary').innerHTML = summary.join('<br>');
 }
 
-// Expose globally
 window.toggleCustomSplit = function () {
   const type = document.getElementById('splitType').value;
   document.getElementById('customSplit').style.display = type === 'custom' ? 'block' : 'none';
 };
 
-// Live sync
+// ✅ Firestore listener with safety check
 window.addEventListener('DOMContentLoaded', () => {
   const splitTitle = localStorage.getItem('currentSplit');
-  if (document.getElementById('splitTitle'))
+  if (!splitTitle) {
+    alert("No split selected. Redirecting to home...");
+    location.href = "index.html";
+    return;
+  }
+
+  if (document.getElementById('splitTitle')) {
     document.getElementById('splitTitle').textContent = splitTitle;
+  }
 
   const splitRef = doc(db, "splits", splitTitle);
   onSnapshot(splitRef, (docSnap) => {
