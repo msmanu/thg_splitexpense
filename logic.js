@@ -2,11 +2,10 @@
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
 import {
-  getFirestore, collection, doc, getDoc, setDoc, updateDoc,
-  onSnapshot, addDoc
+  getFirestore, doc, getDoc, setDoc, updateDoc, onSnapshot
 } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
 
-// Firebase configuration
+// Firebase config
 const firebaseConfig = {
   apiKey: "AIzaSyAVggn2ylUAG9AdDFYAB6KEyphR_vkqc-0",
   authDomain: "thehandsomegangexpenses.firebaseapp.com",
@@ -16,13 +15,12 @@ const firebaseConfig = {
   appId: "1:66696869906:web:031ed019cdadbfac66c0cb"
 };
 
-// Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
 const people = ["Pineapple", "Akele", "Nimaanga", "Zillet", "Shineeee", "Madhurameyy"];
 
-// Make function accessible globally
+// Make globally accessible
 window.addExpense = async function () {
   const splitTitle = localStorage.getItem('currentSplit');
   const payer = document.getElementById('payer').value;
@@ -57,7 +55,6 @@ window.addExpense = async function () {
   const newExpenses = [...(data?.expenses || []), { payer, amount, shares }];
   await updateDoc(splitRef, { expenses: newExpenses });
 
-  // Reset fields
   document.getElementById('amount').value = "";
   if (type === "custom") {
     document.querySelectorAll('#customSplit input').forEach(i => i.value = "");
@@ -89,13 +86,13 @@ function renderSummary(data) {
   document.getElementById('summary').innerHTML = summary.join('<br>');
 }
 
-// Expose toggle function to global scope
+// Expose globally
 window.toggleCustomSplit = function () {
   const type = document.getElementById('splitType').value;
   document.getElementById('customSplit').style.display = type === 'custom' ? 'block' : 'none';
 };
 
-// Live sync Firestore listener
+// Live sync
 window.addEventListener('DOMContentLoaded', () => {
   const splitTitle = localStorage.getItem('currentSplit');
   if (document.getElementById('splitTitle'))
