@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Generate Split</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+</head>
+<body class="minecraft-border">
+  <h1 class="main-title">Generate a New Split</h1>
+  <div class="input-container">
+    <label for="newSplit">Enter Title of New Split:</label>
+    <input type="text" id="newSplit" placeholder="e.g. GoaTrip2025">
+    <button onclick="createSplit()">Create Split</button>
+  </div>
+
+  <script>
+    async function createSplit() {
+      const title = document.getElementById('newSplit').value.trim();
+      if (!title) return alert("Please enter a title");
+      localStorage.setItem('currentSplit', title);
+      // You can pre-create it in Firestore if needed
+      location.href = 'expense.html';
+    }
+  </script>
+</body>
+</html>

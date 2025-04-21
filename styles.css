@@ -1,0 +1,49 @@
+<!-- styles.css -->
+body {
+  background-color: #111;
+  color: #eee;
+  font-family: 'Courier New', monospace;
+  text-align: center;
+  padding: 20px;
+}
+.border-minecraft {
+  border: 8px solid #3a3;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 0 10px #0f0;
+}
+.title {
+  font-family: 'Star Jedi', sans-serif;
+  font-size: 2.5em;
+}
+.subtitle {
+  font-family: 'Creepster', cursive;
+  color: #c44;
+}
+.quote {
+  font-style: italic;
+  margin-top: 50px;
+}
+.btn {
+  margin: 10px;
+  padding: 10px 20px;
+  background: #282;
+  color: white;
+  text-decoration: none;
+  display: inline-block;
+  border-radius: 8px;
+}
+.indiana-title {
+  font-family: 'Adventure', cursive;
+  font-size: 2em;
+}
+input, select {
+  margin: 5px;
+  padding: 5px;
+}
+.person {
+  margin: 5px;
+}
+
+/* Include @font-face links or import from Google Fonts or local path */
+

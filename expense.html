@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Expense Split</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+</head>
+<body class="minecraft-border">
+  <h1 id="splitTitle" class="indiana-style"></h1>
+
+  <div class="form-section">
+    <label for="payer">Who Paid?</label>
+    <select id="payer">
+      <option>Pineapple</option>
+      <option>Akele</option>
+      <option>Nimaanga</option>
+      <option>Zillet</option>
+      <option>Shineeee</option>
+      <option>Madhurameyy</option>
+    </select>
+
+    <label for="amount">Amount (₹)</label>
+    <input type="number" id="amount" placeholder="Enter amount">
+
+    <label for="splitType">Split Type</label>
+    <select id="splitType" onchange="toggleCustomSplit()">
+      <option value="equal">Equal to All</option>
+      <option value="custom">Custom Split</option>
+    </select>
+
+    <div id="customSplit" class="custom-grid" style="display:none">
+      <div class="person" data-name="Pineapple">Pineapple: <input type="number"></div>
+      <div class="person" data-name="Akele">Akele: <input type="number"></div>
+      <div class="person" data-name="Nimaanga">Nimaanga: <input type="number"></div>
+      <div class="person" data-name="Zillet">Zillet: <input type="number"></div>
+      <div class="person" data-name="Shineeee">Shineeee: <input type="number"></div>
+      <div class="person" data-name="Madhurameyy">Madhurameyy: <input type="number"></div>
+    </div>
+
+    <button onclick="addExpense()">Add Expense</button>
+  </div>
+
+  <div class="summary-box">
+    <h2>Simplified Summary</h2>
+    <div id="summary"></div>
+  </div>
+
+  <script type="module" src="logic.js"></script>
+</body>
+</html>
